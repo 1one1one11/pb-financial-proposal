@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>모집마감 상품 아카이브 | 서인원 PB</title>
+<style>
+:root{--navy:#0b2454;--blue:#0046ff;--ink:#142033;--muted:#667085;--line:#d7e0ee;--bg:#f5f7fb;--soft:#eef4ff;--danger:#9f1239;--dangerbg:#fff1f2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.45}.page{width:min(1120px,100%);margin:22px auto;padding:24px 26px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 34px rgba(16,42,86,.10)}.header{display:flex;justify-content:space-between;gap:20px;align-items:end;border-bottom:3px solid var(--navy);padding-bottom:14px}.kicker{font-size:12px;font-weight:900;color:var(--blue);letter-spacing:.10em;text-transform:uppercase}h1{margin:5px 0 0;font-size:30px;letter-spacing:-.03em}.meta{text-align:right;color:var(--muted);font-size:13px}.notice{margin:14px 0;padding:12px 14px;border:1px solid #fecdd3;background:var(--dangerbg);border-radius:14px;color:var(--danger);font-size:13px;font-weight:800}.controls{display:flex;gap:8px;align-items:center;margin:14px 0;flex-wrap:wrap}.aud{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-weight:900;font-size:13px;cursor:pointer}.aud.active{background:var(--navy);color:#fff}.links{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}.links a{border:1px solid var(--line);border-radius:999px;padding:7px 12px;text-decoration:none;color:#344054;font-weight:900;font-size:12px;background:#fff}table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;border:1px solid var(--line);border-radius:14px;overflow:hidden}th{background:var(--navy);color:#fff;text-align:left;padding:9px 8px}td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}.type{display:inline-block;background:var(--soft);color:var(--navy);font-weight:900;border-radius:999px;padding:4px 8px}.name{font-weight:900;white-space:pre-line}.point{white-space:pre-line}.muted{color:var(--muted)}.count{font-weight:900;color:var(--navy)}@media(max-width:760px){.header{display:block}.meta{text-align:left;margin-top:8px}table,thead,tbody,tr,td{display:block}thead{display:none}tr{border-bottom:1px solid var(--line)}td{border-bottom:0}td:before{content:attr(data-label);display:block;font-size:11px;font-weight:900;color:var(--muted);margin-bottom:2px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="header">
+    <div><div class="kicker">Private Archive</div><h1>모집마감 상품 아카이브</h1></div>
+    <div class="meta"><b>광진금융센터 서인원 PB</b><br/>고객 발송용 페이지에서는 자동 제외</div>
+  </section>
+  <div class="notice">내부 확인용 숨은 페이지입니다. GitHub Pages 특성상 URL을 아는 사람은 접근 가능하므로 민감정보/고객정보는 넣지 마세요.</div>
+  <section class="controls">
+    <button class="aud active" data-aud="personal">개인</button>
+    <button class="aud" data-aud="corporate">법인</button>
+    <span class="count" id="count"></span>
+    <div class="links"><a href="index.html">고객용 A4</a><a href="index_cards.html">고객용 카드</a></div>
+  </section>
+  <table><thead><tr><th style="width:9%">유형</th><th style="width:22%">상품명</th><th style="width:14%">수익률/포인트</th><th style="width:13%">금액</th><th style="width:14%">기간/수수료</th><th>마감 근거·유의사항</th></tr></thead><tbody id="rows"></tbody></table>
+</main>
+<script>
+let BANK=null, AUD='personal';
+async function load(){const [p,c]=await Promise.all([fetch('./data/personal_2026-05-18.json',{cache:'no-store'}),fetch('./data/corporate_2026-05-18.json',{cache:'no-store'})]); BANK={personal:await p.json(), corporate:await c.json()}; render();}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function clean(s){return String(s||'').replace(/\r/g,'').replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').trim()}
+function multiline(s){return clean(s).replace(/ \/ /g,'\n')}
+function parseCutoff(){const now=new Date(); return new Date(now.getFullYear(),now.getMonth(),now.getDate());}
+function mdDate(y,m,d){m=Number(m); d=Number(d); if(m<1||m>12||d<1||d>31)return null; return new Date(Number(y||new Date().getFullYear()),m-1,d);}
+function latestRecruitEnd(text){text=String(text||''); const ends=[]; let m;
+  const range=/(?:모집[:\s]*)?(?:(20\d{2})[.\/-])?(\d{1,2})[.\/-](\d{1,2})(?:\s*\([^)]*\))?\s*(?:~|–|-|부터|→)\s*(?:(20\d{2})[.\/-])?(\d{1,2})[.\/-](\d{1,2})/g;
+  while((m=range.exec(text))){const st=mdDate(m[1],m[2],m[3]); const dt=mdDate(m[4]||m[1],m[5],m[6]); if(st&&dt)ends.push(dt);}
+  const single=/(?:(20\d{2})[.\/-])?(\d{1,2})[.\/-](\d{1,2})\s*(?:모집|수요조사\s*마감|사전예약|가입)/g;
+  while((m=single.exec(text))){const dt=mdDate(m[1],m[2],m[3]); if(dt)ends.push(dt);}
+  return ends.length?new Date(Math.max(...ends.map(d=>d.getTime()))):null;
+}
+function isExpired(x){const end=latestRecruitEnd(Object.values(x).join(' ')); if(!end)return false; return end < parseCutoff();}
+function fields(item){const thesis=item['투자포인트']||'';return{type:item['유형']||'',name:item['상품명']||'',rate:item['수익률']||item['목표 수익률']||'상품별 확인',amount:item['가능금액']||item['최소가입금액']||'상품별 상이',period:item['투자기간']||item['수수료']||'상품별 확인',point:item['세일즈 포인트 및 유의사항']||item['비고']||thesis||'상세 조건 확인 필요'}}
+function archiveItems(){let items=BANK[AUD].sections.flatMap(s=>s.items.map(fields)).filter(isExpired); const seen=new Set(); return items.filter(x=>{const key=[x.type,x.name,x.rate,x.amount,x.period].join('|'); if(seen.has(key))return false; seen.add(key); return true;})}
+function render(){const items=archiveItems(); document.getElementById('count').textContent=`아카이브 ${items.length}개`; document.getElementById('rows').innerHTML=items.length?items.map(row).join(''):'<tr><td colspan="6" class="muted">모집 기간이 지난 상품이 없습니다.</td></tr>';}
+function row(x){return `<tr><td data-label="유형"><span class="type">${esc(x.type)}</span></td><td data-label="상품명" class="name">${esc(multiline(x.name))}</td><td data-label="수익률/포인트">${esc(multiline(x.rate))}</td><td data-label="금액">${esc(multiline(x.amount))}</td><td data-label="기간/수수료">${esc(multiline(x.period))}</td><td data-label="근거" class="point">${esc(multiline(x.point))}</td></tr>`}
+document.querySelectorAll('.aud').forEach(b=>b.onclick=()=>{AUD=b.dataset.aud;document.querySelectorAll('.aud').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()});
+load().catch(e=>{document.getElementById('rows').innerHTML='<tr><td colspan="6" class="muted">데이터 로드 실패: '+esc(e.message)+'</td></tr>'});
+</script>
+</body>
+</html>

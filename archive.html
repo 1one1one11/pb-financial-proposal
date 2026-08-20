@@ -26,7 +26,7 @@
 </main>
 <script>
 let BANK=null, AUD='personal';
-async function load(){const [p,c]=await Promise.all([fetch('./data/personal_2026-05-18.json',{cache:'no-store'}),fetch('./data/corporate_2026-05-18.json',{cache:'no-store'})]); BANK={personal:await p.json(), corporate:await c.json()}; render();}
+async function load(){const [p,c]=await Promise.all([fetch('./data/personal_2026-08-20.json',{cache:'no-store'}),fetch('./data/corporate_2026-05-18.json',{cache:'no-store'})]); BANK={personal:await p.json(), corporate:await c.json()}; render();}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function clean(s){return String(s||'').replace(/\r/g,'').replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').trim()}
 function multiline(s){return clean(s).replace(/ \/ /g,'\n')}

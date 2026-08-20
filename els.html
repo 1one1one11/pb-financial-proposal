@@ -1,14 +1,41 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ELS 청약 가능 상품</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신한투자증권 공모 청약가능상품 안내</title>
 <style>
-html,body{margin:0;background:#fff}img{display:block;width:100%;max-width:3000px;height:auto;margin:0 auto}@media print{img{max-width:none;width:100%}}
+:root{--navy:#061844;--blue:#064893;--red:#b3182a;--yellow:#fff200;--paper:#fffefa;--ink:#111}
+*{box-sizing:border-box} html{background:#d9d9d9} body{margin:0;background:#fff;color:var(--ink);font-family:"Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;letter-spacing:-.055em}.sheet{width:min(1480px,100%);min-height:100vh;margin:auto;padding:38px 44px 70px;background:var(--paper)}
+.brand{height:105px;display:flex;align-items:center;gap:20px;border-bottom:2px solid #222;color:#003d88;font-weight:900;font-size:43px;letter-spacing:-.08em}.brand-mark{width:62px;height:62px;border-radius:50%;background:#073b89;color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-style:italic;font-size:48px;line-height:1}.internal{margin-left:auto;border-radius:11px;background:#06133f;color:#fff;padding:13px 23px;font-size:29px;letter-spacing:-.08em}
+.notices{padding:23px 30px 22px;border-bottom:2px solid #222;font-size:20px;line-height:2.0;font-weight:700}.notices p{margin:0}.red{color:var(--red)}.blue{color:#113f9e}
+.tab{display:inline-block;margin-top:50px;min-width:255px;padding:8px 50px 9px;background:var(--navy);color:#fff;border-radius:16px 40px 0 0;font-size:30px;font-weight:800;text-align:center}
+table{border-collapse:collapse;width:100%;table-layout:fixed}.schedule{font-size:21px;text-align:center}.schedule th,.schedule td{border:2px solid #1472a9;padding:10px 5px}.schedule th{height:58px;background:#f9f9f8;font-weight:900}.schedule td{height:104px;font-size:20px}.schedule .rounds{padding:0}.rounds span{height:50%;display:grid;place-items:center}.rounds span+span{border-top:2px solid #1472a9}.schedule col:nth-child(1){width:10%}.schedule col:nth-child(2){width:14%}.schedule col:nth-child(3){width:19%}.schedule col:nth-child(4){width:19%}.schedule col:nth-child(5){width:19%}.schedule col:nth-child(6){width:19%}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:39px 0 8px;font-size:30px;font-weight:900}.legend{font-size:22px;font-weight:700}.pmark{display:inline-grid;place-items:center;width:24px;height:24px;margin-right:5px;background:#920b16;color:#fff;font-size:17px;font-family:serif;vertical-align:3px}
+.products{font-size:18px;text-align:center;border:2px solid #111}.products th{height:54px;border-bottom:2px solid #111;font-size:22px;font-weight:900}.products th+th,.products td+td{border-left:2px dotted #718098}.products td{height:112px;padding:8px 8px;vertical-align:middle;border-bottom:2px solid #111;line-height:1.28}.products tr:last-child td{border-bottom:0}.products .no{position:relative;font-size:20px}.products .no .pmark{position:absolute;left:0;top:0}.products .asset{line-height:1.4}.products .asset .k{color:#9b3f82}.products .asset .n{color:#9c4c37}.products .asset .e{color:#397c50}.products .type{line-height:1.35}.products .condition{line-height:1.3}.products .risk{color:var(--red)}.products col:nth-child(1){width:8%}.products col:nth-child(2){width:20%}.products col:nth-child(3){width:11%}.products col:nth-child(4){width:29%}.products col:nth-child(5){width:7%}.products col:nth-child(6){width:7%}.products col:nth-child(7){width:18%}
+.footnote{margin-top:18px;font-size:14px;line-height:1.5;color:#333}@media(max-width:760px){.sheet{padding:18px 10px 40px;overflow-x:auto}.brand{height:72px;font-size:27px;gap:10px;min-width:1040px}.brand-mark{width:40px;height:40px;font-size:31px}.internal{font-size:19px;padding:8px 13px}.notices{min-width:1040px;font-size:16px;padding:17px 18px}.tab{margin-top:28px;font-size:23px;min-width:190px;padding:7px 25px}.schedule,.products{min-width:1040px}.section-title{min-width:1040px;font-size:26px}.products{font-size:16px}.products th{font-size:19px}.schedule{font-size:18px}}@media print{@page{size:A4 landscape;margin:7mm}html,body{background:#fff}.sheet{width:auto;min-height:0;padding:0;background:#fff}.brand{height:55px;font-size:26px}.brand-mark{width:34px;height:34px;font-size:26px}.internal{font-size:17px;padding:6px 12px;border-radius:6px}.notices{padding:10px 15px 11px;font-size:11px;line-height:1.8}.tab{margin-top:18px;min-width:150px;padding:4px 22px;font-size:18px;border-radius:7px 22px 0 0}.schedule{font-size:12px}.schedule th{height:29px}.schedule td{height:47px;font-size:12px}.schedule .rounds span{height:50%;}.section-title{margin:19px 0 4px;font-size:19px}.legend{font-size:14px}.pmark{width:14px;height:14px;font-size:10px;vertical-align:1px}.products{font-size:11px}.products th{height:27px;font-size:13px}.products td{height:59px;padding:3px}.products .no{font-size:13px}.footnote{font-size:8px;margin-top:7px}}
 </style>
 </head>
-<body>
-<img src="assets/els-20260820-original.jpeg" alt="신한투자증권 ELS 청약 가능 상품표 및 모집 일정"/>
-</body>
-</html>
+<body><main class="sheet">
+<header class="brand"><span class="brand-mark">S</span><span>신한투자증권 공모 청약가능상품입니다.</span><span class="internal">사내한</span></header>
+<section class="notices" aria-label="청약 유의사항">
+<p>※ <b class="red">일반개인투자자 청약가능기간은</b> 모집시작일 부터 <b class="red">숙려기간 이전 자정까지</b> 입니다. 모집 종료일이 아니오니 주의 부탁드립니다.</p>
+<p>※ <b class="red">청약가능기간에</b> 청약 후 <b class="red">숙려기간(2영업일)이 부여 되며</b>, 실제청약가능기간은 <b class="red">단축</b> 되오니 이점 <b class="red">유의</b>하시기 바랍니다.</p>
+<p>※ 숙려기간 이후 투자자는 <b class="red">가입의사를 확정</b>하여야 하며, 가입 <b class="red">미확정시 자동철회</b> 되오니 이점 또한 <b class="red">유의</b>하시기 바랍니다.</p>
+<p>※ 숙려기간 이후 <b class="red">청약취소시 재가입이 불가</b>하오니 <b class="red">유의</b> 하시기 바랍니다.</p>
+<p>※ 투자자 숙려제도는 ELS/DLS 상품에 해당됩니다 (비고난도의 경우 고령투자자와 부적합투자자만 대상) <b class="blue">※ ELB/DLB제외</b></p>
+</section>
+<div class="tab">모집일정</div>
+<table class="schedule" aria-label="모집 일정"><colgroup><col><col><col><col><col><col></colgroup><thead><tr><th>회차</th><th>한도(억원)</th><th>모집시작일</th><th>모집종료일</th><th>기준가격결정일</th><th>발행일</th></tr></thead><tbody><tr><td class="rounds"><span>27890 ~ 27895</span><span>27901</span></td><td rowspan="2">100</td><td rowspan="2">08월 24일 (월)</td><td rowspan="2">08월 31일 (월)</td><td rowspan="2">08월 31일 (월)</td><td rowspan="2">08월 31일 (월)</td></tr><tr></tr></tbody></table>
+<div class="section-title"><span>ELS(주가연계파생결합증권)</span><span class="legend"><i class="pmark">P</i> = 소개영업 가능</span></div>
+<table class="products" aria-label="ELS 상품 목록"><colgroup><col><col><col><col><col><col><col></colgroup><thead><tr><th>회차</th><th>기초자산</th><th>유형</th><th>상환조건</th><th>만기</th><th>상환<br>주기</th><th>수익률</th></tr></thead><tbody>
+<tr><td class="no"><i class="pmark">P</i>27890</td><td class="asset"><span class="k">KOSPI200</span><br>/S&amp;P500<br><span class="n">/NIKKEI225</span></td><td class="type">Super<br>Lizard<br>스텝다운</td><td class="condition">90(<span class="risk">75</span>)-90(<span class="risk">70</span>)-90(<span class="risk">65</span>)-90(<span class="risk">60</span>)-85-85<br>85-85-80-80-80-50<br>(No KI)</td><td>3년</td><td>3개월</td><td>연 8.00%<br>(Lizard 연 8.00%)</td></tr>
+<tr><td class="no"><i class="pmark">P</i>27891</td><td class="asset"><span class="k">KOSPI200</span></td><td class="type">Lizard<br>스텝다운</td><td class="condition">90-90-90-90(<span class="risk">70</span>)-80-80-80-80-75-<br>75-70-50<br>(No KI)</td><td>3년</td><td>3개월</td><td>연 9.70%<br>(Lizard 연 9.70%)</td></tr>
+<tr><td class="no"><i class="pmark">P</i>27892</td><td class="asset"><span class="k">KOSPI200</span><br>/S&amp;P500<br><span class="n">/NIKKEI225</span></td><td class="type">Lizard<br>스텝다운</td><td class="condition">80-80(<span class="risk">70</span>)-75-75-70-50<br>(No KI)</td><td>3년</td><td>6개월</td><td>연 12.20%<br>(Lizard 연 12.20%)</td></tr>
+<tr><td class="no"><i class="pmark">P</i>27893</td><td class="asset"><span class="k">KOSPI200</span><br>/S&amp;P500<br><span class="e">/EUROSTOXX50</span></td><td class="type">Lizard<br>스텝다운</td><td class="condition">75-75(<span class="risk">70</span>)-70-70-65-50<br>(No KI)</td><td>3년</td><td>6개월</td><td>연 10.00%<br>(Lizard 연 10.00%)</td></tr>
+<tr><td class="no"><i class="pmark">P</i>27894</td><td class="asset"><span class="k">KOSPI200</span><br>/S&amp;P500<br><span class="e">/EUROSTOXX50</span></td><td class="type">월지급<br>스텝다운</td><td class="condition">95-90-85-80-75-50<br>(No KI)<br>월지급 배리어: 50%</td><td>3년</td><td>6개월</td><td>최대 연 10.92% (월 0.91%)</td></tr>
+<tr><td class="no"><i class="pmark">P</i>27895</td><td class="asset"><span class="k">KOSPI200</span><br>/S&amp;P500<br><span class="n">/NIKKEI225</span></td><td class="type">월지급<br>Lizard<br>스텝다운</td><td class="condition">85-85(<span class="risk">75</span>)-85-85(<span class="risk">70</span>)-80-80-80-80-<br>75-75-70-55<br>(No KI)<br>월지급 배리어: 55%</td><td>3년</td><td>3개월</td><td>최대 연 10.02% (월 0.835%)</td></tr>
+<tr><td class="no">27901</td><td class="asset">삼성전자 보통주<br>/SK하이닉스</td><td class="type">Triple<br>Lizard<br>스텝다운</td><td class="condition">75-75(<span class="risk">65</span>)-75(<span class="risk">60</span>)-75(<span class="risk">50</span>)-70-70-70-<br>70-65-65-65-50<br>(<span class="risk">30 KI</span>)</td><td>3년</td><td>3개월</td><td>연 18.20%<br>(Lizard 연 18.20%)</td></tr>
+</tbody></table>
+<p class="footnote">※ 고객 상담용 요약 화면입니다. 실제 청약 조건·수익률·발행 일정은 가입 전 최신 상품설명서 및 계약서류를 기준으로 확인해야 합니다.</p>
+</main></body></html>

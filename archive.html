@@ -26,7 +26,7 @@
 </main>
 <script>
 let BANK=null, AUD='personal';
-async function load(){const [p,c]=await Promise.all([fetch('./data/personal_2026-08-20.json',{cache:'no-store'}),fetch('./data/corporate_2026-05-18.json',{cache:'no-store'})]); BANK={personal:await p.json(), corporate:await c.json()}; render();}
+async function load(){const [p,c]=await Promise.all([fetch('./data/personal_2026-08-20.json',{cache:'no-store'}),fetch('./data/corporate_2026-10-02.json',{cache:'no-store'})]); BANK={personal:await p.json(), corporate:await c.json()}; render();}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function clean(s){return String(s||'').replace(/\r/g,'').replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').trim()}
 function multiline(s){return clean(s).replace(/ \/ /g,'\n')}
@@ -39,7 +39,7 @@ function latestRecruitEnd(text){text=String(text||''); const ends=[]; let m;
   while((m=single.exec(text))){const dt=mdDate(m[1],m[2],m[3]); if(dt)ends.push(dt);}
   return ends.length?new Date(Math.max(...ends.map(d=>d.getTime()))):null;
 }
-function isExpired(x){const end=latestRecruitEnd(Object.values(x).join(' ')); if(!end)return false; return end < parseCutoff();}
+function isExpired(x){if(AUD==='corporate'&&!/모집|청약|사전예약/.test(Object.values(x).join(' ')))return false;const end=latestRecruitEnd(Object.values(x).join(' ')); if(!end)return false; return end < parseCutoff();}
 function fields(item){const thesis=item['투자포인트']||'';return{type:item['유형']||'',name:item['상품명']||'',rate:item['수익률']||item['목표 수익률']||'상품별 확인',amount:item['가능금액']||item['최소가입금액']||'상품별 상이',period:item['투자기간']||item['수수료']||'상품별 확인',point:item['세일즈 포인트 및 유의사항']||item['비고']||thesis||'상세 조건 확인 필요'}}
 function archiveItems(){let items=BANK[AUD].sections.flatMap(s=>s.items.map(fields)).filter(isExpired); const seen=new Set(); return items.filter(x=>{const key=[x.type,x.name,x.rate,x.amount,x.period].join('|'); if(seen.has(key))return false; seen.add(key); return true;})}
 function render(){const items=archiveItems(); document.getElementById('count').textContent=`아카이브 ${items.length}개`; document.getElementById('rows').innerHTML=items.length?items.map(row).join(''):'<tr><td colspan="6" class="muted">모집 기간이 지난 상품이 없습니다.</td></tr>';}
